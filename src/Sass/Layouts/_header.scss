@@ -1,0 +1,180 @@
+/* HEADER */
+header {
+    nav {
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        z-index: 999;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+        &:hover {
+            background: rgb(255, 255, 255);
+        }
+    }
+
+    .weblogo {
+        transform: translateX(20%);
+        img {
+            width: 47px;
+        }
+    }
+
+    .header__menu {
+        position: absolute;
+        top: 50%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        .nav-item .nav-link {
+            @include styleText($color-black-1, $fs-2, $fw-2);
+            &:hover {
+                color: $color-red-0;
+            }
+        }
+    }
+
+    .header__user {
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: flex-end;
+        .account {
+            padding-right: $pd-2;
+            border-right: 1px solid #e6e6e6;
+            img {
+                width: 30px;
+                border-radius: 30px;
+            }
+            span {
+                @include styleText($color-gray-0, $fs-1, $fw-2);
+                padding: 0 $pd-1;
+            }
+        }
+
+        .location {
+            display: flex;
+            .location__logo {
+                padding-top: $pd-0;
+                padding-left: $pd-1;
+            }
+            .dropdown {
+                .btn {
+                    @include styleText($color-gray-0, $fs-1, $fw-2);
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            .dropdown-menu {
+                transform: translateY(10%);
+                .dropdown-item {
+                    line-height: 20px !important;
+                }
+            }
+            .selectScroll {
+                max-height: 300px;
+                overflow-y: scroll;
+                /* width */
+                &::-webkit-scrollbar {
+                    width: 5px;
+                }
+
+                /* Track */
+                &::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                }
+
+                /* Handle */
+                &::-webkit-scrollbar-thumb {
+                    background: $color-gray-1;
+                }
+            }
+        }
+    }
+    .menu-option_Logo {
+        display: none;
+    }
+
+    .sidenav {
+        display: none;
+    }
+}
+
+@include responsive("medium") {
+    header {
+        align-items: center;
+        .header__menu {
+            display: none;
+        }
+        .header__user {
+            display: none;
+        }
+        .menu-option_Logo {
+            display: block;
+            right: 5%;
+            top: 0%;
+            img {
+                width: 25px;
+                background-color: $color-white-0;
+            }
+        }
+        .sidenav {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            // width: 100%;
+            width: 0%;
+            height: 100%;
+            z-index: 10;
+            overflow: hidden;
+            transition: all 0.5s;
+            .rightMenu {
+                background-color: $color-white-0;
+                width: 70%;
+                position: absolute;
+                top: 0;
+                right: 0;
+                transition: 0.5s;
+                padding-bottom: $pd-5;
+                .account {
+                    padding-top: $pd-3;
+                    padding-left: $pd-3;
+                    border-right: 1px solid #e6e6e6;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    cursor: pointer;
+                    img {
+                        width: 30px;
+                        border-radius: 50%;
+                    }
+                    span {
+                        @include styleText($color-gray-0, $fs-2, $fw-2);
+                        padding: 0 $pd-1;
+                    }
+                    .next-session_Logo {
+                        position: absolute;
+                        right: -5%;
+                        margin-right: $mg-2;
+                        img {
+                            width: 18px;
+                            background-color: $color-white-0;
+                        }
+                    }
+                }
+                a.nav-link {
+                    @include styleText($color-black-2, $fs-3, $fw-1);
+                    margin: $mg-2 0;
+                    &:hover {
+                      color: $color-red-2 !important;
+                    }
+                }
+            }
+        }
+    }
+}
