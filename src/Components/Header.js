@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import style from "../Css/main.css";
 
-export default function Header() {
-  return (
-
+export default function Header(props) {
+   const [stateHidden, setStateHidden] = useState(false);
+   const handleClick = (status) => {
+     setStateHidden(status);
+   }
    
-
+    
+  return (
     // HEADER
     <header>
 
@@ -49,16 +52,16 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <span className="menu-option_Logo" onClick="openNav()"><img src="./img/menu-options.png" /></span>
+          <button className="menu-option_Logo" onClick={()=>{handleClick(true);}}><img src="./img/menu-options.png" /></button>
         </div>
         
-        <div className="sidenav">
+        <div className={stateHidden? "isOpen" : "isClose"} >
           
           <div className="rightMenu" id="mySidenav">
             <div className="account">
               <img src="./img/avatar.png" />
               <span>Đăng nhập</span>
-              <span className="next-session_Logo" onClick="closeNav()" ><img src="./img/next-session.png" /></span>
+              <button className="next-session_Logo" onClick={()=>{handleClick(false);}} ><img src="./img/next-session.png" /></button>
             </div>
            
             <a className="nav-link" href="#">Lịch Chiếu</a>
